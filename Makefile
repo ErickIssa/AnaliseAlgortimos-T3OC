@@ -1,22 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-TARGET = program
-SRC = $(shell find . -name "*.c")
-OBJ = $(SRC:.c=.o)
+all: program
 
-all: $(TARGET)
+program: main.o algoritmos.o
+	$(CC) $(CFLAGS) -o program main.o algoritmos.o
 
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) -lm
+main.o: main.c algoritmos.h
+	$(CC) $(CFLAGS) -c main.c
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+algoritmos.o: algoritmos.c algoritmos.h
+	$(CC) $(CFLAGS) -c algoritmos.c
 
 clean:
-	rm -f $(OBJ) $(TARGET)
-
-run: $(TARGET)
-	./$(TARGET)
-
-.PHONY: all clean run
+	rm -f *.o program

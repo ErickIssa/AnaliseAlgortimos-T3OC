@@ -1,7 +1,7 @@
 #ifndef ALGORITMOS_H
 #define ALGORITMOS_H
 
-#define MAXTAM 5000
+#define MAXTAM 10000
 #define NBITS 32
 #define M 4
 #define BASE (1 << M)
